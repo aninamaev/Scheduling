@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QqInfoProject.View.UserLoginPage"
+             Padding="10,10,10,10"
+             Title="{Binding LoginTitle}"
+             BackgroundColor="{Binding BackgroundColor}">
+  <StackLayout VerticalOptions="CenterAndExpand" BackgroundColor="{Binding BackgroundColor}">
+    <ListView x:Name="UsersListView" ItemsSource="{Binding UsersList}" VerticalOptions="Center" 
+              SeparatorColor="{Binding TextColor}" ItemSelected="UserSelected">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ImageCell ImageSource="{Binding Photo}"
+                     Text="{Binding Name}" TextColor="{Binding TextColor}" 
+                     Detail="{Binding Availability}" DetailColor="{Binding TextColor}"/>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </StackLayout>
+</ContentPage>

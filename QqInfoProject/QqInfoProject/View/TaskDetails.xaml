@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QqInfoProject.View.TaskDetailsPage"
+             BackgroundColor="{Binding BackgroundColor}"
+             Title="{Binding TaskDetailsTitle}"
+             Padding="10,10,10,10">
+    <StackLayout Padding="3,3,3,3" Spacing="13">
+      <Label Text="{Binding TaskName}" BackgroundColor="{Binding BackgroundColor}" TextColor="{Binding TextColor}" FontSize="19" VerticalTextAlignment="Center"
+             HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+      <Label Text="{Binding EquipmentName}" BackgroundColor="{Binding BackgroundColor}" TextColor="{Binding TextColor}" FontSize="17" VerticalTextAlignment="Center"
+             HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+
+      <ListView x:Name="IngredientsListView" ItemsSource="{Binding IngredientsCollection}" IsVisible="{Binding HasIngredients}"
+                     BackgroundColor="{Binding BackgroundColor}" SeparatorColor="{Binding TextColor}">
+        <ListView.Header>
+          <Label Text="Ingrediente necesare: " BackgroundColor="White" TextColor="#003366"
+                 FontSize="17" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"
+                 HorizontalOptions="StartAndExpand"/>
+        </ListView.Header>
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell>
+              <Grid>
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="6*"/>
+                  <ColumnDefinition Width="2*"/>
+                  <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Text="{Binding Name}" BackgroundColor="Transparent"
+                       TextColor="{Binding TextColor}" FontSize="15" VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Start"/>
+                <Label Grid.Column="1" Text="{Binding Grammage}" BackgroundColor="Transparent"
+                       TextColor="{Binding TextColor}" FontSize="15" VerticalTextAlignment="Center"
+                       HorizontalTextAlignment="Center"/>
+                <Button Grid.Column="2" Text="Lot" IsVisible="{Binding HasDetails}" BackgroundColor="Transparent"
+                        TextColor="{Binding TextColor}" Clicked="LotButtonClicked"
+                        CommandParameter="{Binding Id}" BorderColor="{Binding TextColor}" BorderWidth="1"/>
+              </Grid>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+      <StackLayout Orientation="Vertical" Padding="3,0,3,3" Spacing="10">
+        <Button x:Name="StartButton" Text="Start" BackgroundColor="{Binding BackgroundColor}" TextColor="{Binding TextColor}"
+                BorderWidth="1" BorderColor="{Binding TextColor}" Clicked="OnStartButtonClicked"/>
+        <StackLayout Orientation="Horizontal" Spacing="25" HorizontalOptions="CenterAndExpand">
+          <Button x:Name="HoldButton" Text="Pauza" BackgroundColor="{Binding BackgroundColor}" TextColor="{Binding TextColor}"
+                BorderWidth="1" BorderColor="{Binding TextColor}" Clicked="OnHoldButtonClicked"/>
+          <Button x:Name="CancelButton" Text="Anulare" BackgroundColor="{Binding BackgroundColor}" TextColor="{Binding TextColor}"
+                BorderWidth="1" BorderColor="{Binding TextColor}" Clicked="OnCancelButtonClicked"/>
+        </StackLayout>
+        <Button x:Name="FinalizeButton" Text="Finalizare" BackgroundColor="{Binding BackgroundColor}" TextColor="{Binding TextColor}"
+                BorderWidth="1" BorderColor="{Binding TextColor}" Clicked="OnFinalizeButtonClicked"/>
+      </StackLayout>
+    </StackLayout>
+</ContentPage>

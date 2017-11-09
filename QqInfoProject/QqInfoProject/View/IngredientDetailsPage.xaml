@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QqInfoProject.View.IngredientDetailsPage"
+              BackgroundColor="{Binding BackgroundColor}"
+             Title="{Binding IngredientDetailsTitle}"
+             Padding="10,10,10,10">
+  <StackLayout Spacing="13" BackgroundColor="{Binding BackgroundColor}">
+    <ListView x:Name="BatchListView" ItemsSource="{Binding BatchCollection}"
+                   BackgroundColor="{Binding BackgroundColor}" SeparatorColor="{Binding TextColor}">
+      <ListView.Header>
+        <Label Text="Loturi: " BackgroundColor="White" TextColor="#003366" FontSize="21" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+      </ListView.Header>
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <Grid ColumnSpacing="3">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4.5*"/>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+              </Grid.ColumnDefinitions>
+              <Label Grid.Column="0" Text="{Binding Name}" BackgroundColor="Transparent" TextColor="{Binding TextColor}" FontSize="17" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"/>
+              <Label Grid.Column="1" Text="{Binding Batch}" BackgroundColor="Transparent" TextColor="{Binding TextColor}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+              <Label Grid.Column="2" Text="{Binding ExpirationDate}" BackgroundColor="Transparent" TextColor="{Binding TextColor}" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+              <Switch Grid.Column="3" Toggled="SwitchToggled"/>
+            </Grid>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+    <StackLayout Orientation="Horizontal" Padding="3,3,3,3" Spacing="25" HorizontalOptions="CenterAndExpand">
+      <Button Text="Ok" BackgroundColor="{Binding BackgroundColor}" TextColor="{Binding TextColor}" BorderWidth="1" BorderColor="{Binding TextColor}" Clicked="OnOkButtonClicked" HorizontalOptions="CenterAndExpand"/>
+      <Button Text="Renunță" BackgroundColor="{Binding BackgroundColor}" TextColor="{Binding TextColor}" BorderWidth="1" BorderColor="{Binding TextColor}" Clicked="OnCancelButtonClicked" HorizontalOptions="CenterAndExpand"/>
+    </StackLayout>
+  </StackLayout>
+</ContentPage>

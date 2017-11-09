@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QqInfoProject.View.FinalizeTaskPage"
+             BackgroundColor="{Binding BackgroundColor}"
+             Padding="10,10,10,10"
+             Title="{Binding FinalizeTaskTitle}">
+    <StackLayout Spacing="13">
+      <Label Text="{Binding TaskName}" BackgroundColor="{Binding BackgroundColor}" TextColor="{Binding TextColor}" FontSize="19" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" HorizontalOptions="CenterAndExpand"/>
+      <Slider x:Name="GoodPiecesSlider" Minimum="0" Maximum="{Binding NumberOfPieces}" Value="0" ValueChanged="ValueChangedFromSlider"/>
+      <Entry x:Name="VaueEntry" Placeholder="Introduceti numarul de bucati reusite" BackgroundColor="{Binding BackgroundColor}" TextColor="{Binding TextColor}" Keyboard="Numeric" Unfocused="EntryUnfocusd" HorizontalOptions="CenterAndExpand"/>
+      <Label Text="{Binding Result}" BackgroundColor="{Binding BackgroundColor}" TextColor="{Binding TextColor}" FontSize="16" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"/>
+      <ListView ItemsSource="{Binding UnsuccesResultsCollection}" ItemSelected="ReasonSelected" x:Name="ReasonsListview">
+        <ListView.ItemTemplate>
+          <DataTemplate>
+            <ViewCell>
+              <Grid>
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="5*"/>
+                  <ColumnDefinition Width="3*"/>
+                  <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" Text="{Binding Name}" BackgroundColor="Transparent" TextColor="{Binding TextColor}"
+                       FontSize="14" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                <Entry Grid.Column="1" Text="{Binding Number}" BackgroundColor="Transparent" TextColor="{Binding TextColor}" 
+                       Keyboard="Numeric" HorizontalOptions="CenterAndExpand"/>
+                <Switch Grid.Column="2" x:Name="ReasonSwith" Toggled="IsReasonClicked" IsToggled="{Binding IsReason}"/>
+              </Grid>
+            </ViewCell>
+          </DataTemplate>
+        </ListView.ItemTemplate>
+      </ListView>
+      <StackLayout Orientation="Horizontal" Padding="10,0,10,10" Spacing="25" HorizontalOptions="CenterAndExpand">
+        <Button Text="Ok" BackgroundColor="{Binding BackgroundColor}" TextColor="{Binding TextColor}" BorderWidth="1" BorderColor="{Binding TextColor}" Clicked="OnOkButtonClicked" HorizontalOptions="CenterAndExpand"/>
+        <Button Text="Renunță" BackgroundColor="{Binding BackgroundColor}" TextColor="{Binding TextColor}" BorderWidth="1" BorderColor="{Binding TextColor}" Clicked="OnCancelButtonClicked" HorizontalOptions="CenterAndExpand"/>
+      </StackLayout>
+    </StackLayout>
+</ContentPage>
